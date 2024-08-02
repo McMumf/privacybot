@@ -6,9 +6,9 @@ from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
 from google.auth.transport.requests import Request
 
 
-def Create_Service(client_secret_file, api_name, api_version, *scopes):
+def create_service(client_secret_file, api_name, api_version, *scopes):
     '''
-    This function initiates the OAuth 
+    This function initiates the OAuth
     '''
     print(client_secret_file, api_name, api_version, scopes, sep='-')
     CLIENT_SECRET_FILE = client_secret_file
