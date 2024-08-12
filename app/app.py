@@ -6,7 +6,7 @@ Email logic in corefunctions.py
 from flask import Flask, request, Response, jsonify
 from flask_cors import CORS
 import json
-from corefunctions import csv_to_map, send_email, privacy_api
+from app.core_functions import csv_to_map, send_email, privacy_api
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/privacyAPI/*": {"origins": "http://localhost:3000"}})
