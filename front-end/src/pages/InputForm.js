@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import Header from '../partials/Header';
 import PageIllustration from '../partials/PageIllustration';
 import Dropdown from '../utils/Dropdown';
@@ -31,13 +31,13 @@ class InputForm extends React.Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
   }
-  
+
   handleOptionChange = changeEvent => {
     this.setState({
       usrchoice: changeEvent.target.value
     });
   }
-  
+
 
 
   handleSubmit = (event) => {
@@ -305,7 +305,7 @@ class InputForm extends React.Component {
                     <div className="max-w-lg mx-auto text-center pb-12 pt-8">
                       <h1 className="h3">Select the company list you want to send deletion requests to</h1>
                     </div>
-                  
+
                     {/* <div className="flex items-center">
                       <div className="border-t border-gray-700 border-dotted flex-grow mr-3" aria-hidden="true"></div>
                       <div className="text-gray-400">Select at least one</div>
@@ -313,7 +313,7 @@ class InputForm extends React.Component {
                     </div> */}
 
                     <div className="max-w-sm mx-auto grid gap-8 lg:grid-cols-3 lg:gap-6 items-start lg:max-w-none">
-                      
+
                       {/* Our Top Choices */}
                       <div className="relative flex flex-col h-full p-6 bg-gray-800" data-aos="fade-up" data-aos-delay="700">
                       <div className="absolute top-0 right-0 mr-6 -mt-4">
@@ -448,7 +448,7 @@ class InputForm extends React.Component {
                             </svg>
                             <span><b>Note: </b>This will send 500+ emails, significant follow up is required.</span>
                           </li>
-                          
+
                         </ul>
                         {/* <div className="border border-gray-700 p-3 mt-6"> */}
                         <div className="mt-8">
@@ -545,5 +545,5 @@ class InputForm extends React.Component {
     );
   }
 }
-  export default withRouter(InputForm);
+  export default useNavigate(InputForm);
   // export default InputForm;

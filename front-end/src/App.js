@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {
-  Switch,
+  Routes,
   Route,
   useLocation
 } from 'react-router-dom';
@@ -38,7 +38,7 @@ function App() {
 
   return (
     <>
-      <Switch>
+      <Routes>
         <Route exact path="/">
           <Home />
         </Route>
@@ -78,7 +78,7 @@ function App() {
         <Route path="*">
           <PageNotFound />
         </Route>
-      </Switch>
+      </Routes>
     </>
   );
 }
