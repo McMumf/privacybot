@@ -6,7 +6,7 @@ Email logic in corefunctions.py
 from flask import Flask, request, Response, jsonify
 from flask_cors import CORS
 import json
-from app.core_functions import csv_to_map, send_email, privacy_api
+from core_functions import csv_to_map, send_email, privacy_api
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/privacyAPI/*": {"origins": "http://localhost:3000"}})
@@ -15,7 +15,8 @@ cors = CORS(app, resources={r"/privacyAPI/*": {"origins": "http://localhost:3000
 @app.route('/privacyAPI/v1/', methods=["POST"])
 def execute_privacy_api():
     '''
-    This function runs the privacyAPI for live data brokers
+    Runs the privacyAPI for live data brokers
+
     Cookie check: The cookie "live-test: true" is required to run this function
     '''
     usrjson = request.get_json()

@@ -9,6 +9,8 @@ import email_utils
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+from smtp import smtp_client
+
 def csv_to_map(csv_file):
     """
     converts csv of services to map, returns services map
@@ -35,9 +37,9 @@ def csv_to_map(csv_file):
     return all_services, top_choice, people_search
 
 def create_gmail_label(service):
-    '''
+    """
     Creates a new label/gets the ID of label already named "PrivacyBot".
-    '''
+    """
     # Create a label called PrivacyBot if it doesn't exist.
     results = service.users().labels().list(userId='me').execute()
     labels = results.get('labels', [])
@@ -60,12 +62,12 @@ def create_gmail_label(service):
     return label_id
 
 def send_email(usrjson, services_map):
-    '''
+    """
     This function:
     - initiates the OAuth flow with GMAIL API and upon successful authentication,
     - Creates a label named "PrivacyBot"
     - Drafts and sends the CCPA Data Delete request email to the chosen list of data brokers
-    '''
+    """
     CLIENT_SECRET_FILE = 'client_secret.json'
     API_NAME = 'gmail'
     API_VERSION = 'v1'
@@ -173,8 +175,9 @@ def send_email(usrjson, services_map):
         os.remove(filename)
 
 def privacy_api(usrjson, service_map):
-    '''
+    """
     This function initiates the logic of sending request-to-delete emails to data brokers.
-    '''
+    """
+    client = smtp_client('')
     send_email(usrjson, service_map)
 
