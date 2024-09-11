@@ -11,7 +11,7 @@ from email.mime.text import MIMEText
 
 from smtp import smtp_client
 
-def csv_to_map(csv_file):
+def csv_to_map(csv_file: str) -> tuple[dict, dict, dict]:
     """
     converts csv of services to map, returns services map
     Ex: services["AcmeData"]["privacy_dept_contact_email"] = "privacy@acmedata.com"...
@@ -61,7 +61,7 @@ def create_gmail_label(service):
 
     return label_id
 
-def send_email(usrjson, services_map):
+def send_email(usrjson, services_map) -> None:
     """
     This function:
     - initiates the OAuth flow with GMAIL API and upon successful authentication,
@@ -174,7 +174,7 @@ def send_email(usrjson, services_map):
     for filename in glob.glob("token_gmail*"):
         os.remove(filename)
 
-def privacy_api(usrjson, service_map):
+def privacy_api(usrjson, service_map) -> None:
     """
     This function initiates the logic of sending request-to-delete emails to data brokers.
     """

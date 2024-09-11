@@ -21,7 +21,10 @@ def execute_privacy_api():
     '''
     usrjson = request.get_json()
     services = {}
-    all_services, top_choice, people_search = csv_to_map("services_list_06May2021.csv")
+    service_csv = 'services_list_06May2021.csv'
+    if app.debug:
+        service_csv = 'test_services.csv'
+    all_services, top_choice, people_search = csv_to_map(service_csv)
     print("usrjson['usrchoice'] = ", usrjson['usrchoice'])
     if usrjson['usrchoice'] == 'all_services':
         services = all_services
