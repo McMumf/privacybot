@@ -1,5 +1,5 @@
 
-def format_body(ordered_list) -> str:
+def format_body(ordered_list: list) -> str:
     """
     Write and format the message body with an ordered list of user details
     """

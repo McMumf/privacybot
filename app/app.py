@@ -1,12 +1,12 @@
 """
 Flask App Routing file.
-Email logic in corefunctions.py
+Email logic in core_functions.py
 """
 
-from flask import Flask, request, Response, jsonify
+from flask import Flask, request
 from flask_cors import CORS
 import json
-from core_functions import csv_to_map, send_email, privacy_api
+from core_functions import csv_to_map, privacy_api
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/privacyAPI/*": {"origins": "http://localhost:3000"}})

@@ -61,7 +61,7 @@ def create_gmail_label(service):
 
     return label_id
 
-def send_email(usrjson, services_map) -> None:
+def send_gmail(usrjson, services_map) -> None:
     """
     This function:
     - initiates the OAuth flow with GMAIL API and upon successful authentication,
@@ -174,10 +174,12 @@ def send_email(usrjson, services_map) -> None:
     for filename in glob.glob("token_gmail*"):
         os.remove(filename)
 
+def send_email(usrjson: list[str], servicemap: dict) -> None:
+    print('Sending email')
+
 def privacy_api(usrjson, service_map) -> None:
     """
     This function initiates the logic of sending request-to-delete emails to data brokers.
     """
-    client = smtp_client('')
     send_email(usrjson, service_map)
 
