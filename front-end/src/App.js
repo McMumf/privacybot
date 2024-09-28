@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import {
-  Routes,
-  Route,
-  useLocation
+    Routes,
+    Route,
+    useLocation
 } from 'react-router-dom';
 
 import './css/style.scss';
@@ -18,37 +18,33 @@ import InputForm from './pages/InputForm';
 
 function App() {
 
-  const location = useLocation();
+    const location = useLocation();
 
-  useEffect(() => {
-    AOS.init({
-      once: true,
-      disable: 'phone',
-      duration: 600,
-      easing: 'ease-out-sine',
+    useEffect(() => {
+        AOS.init({
+            once: true,
+            disable: 'phone',
+            duration: 600,
+            easing: 'ease-out-sine',
+        });
     });
-  });
 
-  useEffect(() => {
-    document.querySelector('html').style.scrollBehavior = 'auto'
-    window.scroll({ top: 0 })
-    document.querySelector('html').style.scrollBehavior = ''
-    focusHandling('outline');
-  }, [location.pathname]); // triggered on route change
+    useEffect(() => {
+        document.querySelector('html').style.scrollBehavior = 'auto'
+        window.scroll({ top: 0 })
+        document.querySelector('html').style.scrollBehavior = ''
+        focusHandling('outline');
+    }, [location.pathname]); // triggered on route change
 
-  return (
-    <>
-      <Routes>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/inputform">
-          <InputForm/>
-        </Route>
-        {/* <Route path="/features">
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/inputform" element={<InputForm />} />
+                {/* <Route path="/features">
           <Features />
         </Route> */}
-        {/* <Route path="/pricing">
+                {/* <Route path="/pricing">
           <Pricing />
         </Route>
         <Route path="/blog">
@@ -57,30 +53,24 @@ function App() {
         <Route path="/blog-post">
           <BlogPost />
         </Route> */}
-        <Route path="/about">
-          <About />
-        </Route>
-        {/* <Route path="/contact">
+                <Route path="/about" element={<About />} />
+                {/* <Route path="/contact">
           <Contact />
         </Route>
         <Route path="/help">
           <Help />
         </Route> */}
-        {/* <Route path="/signin">
+                {/* <Route path="/signin">
           <SignIn />
         </Route> */}
-        <Route path="/signup">
-          <SignUp />
-        </Route>
-        {/* <Route path="/reset-password">
+                <Route path="/signup" element={<SignUp />} />
+                {/* <Route path="/reset-password">
           <ResetPassword />
         </Route> */}
-        <Route path="*">
-          <PageNotFound />
-        </Route>
-      </Routes>
-    </>
-  );
+                <Route path="*" element={<PageNotFound />} />
+            </Routes >
+        </>
+    );
 }
 
 export default App;
