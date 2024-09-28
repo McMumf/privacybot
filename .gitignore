@@ -3,6 +3,7 @@ app/__pycache__/
 app/token*
 privacybot/
 privacybot/**
+PB_venv/
 
 # Created by https://www.toptal.com/developers/gitignore/api/react
 # Edit at https://www.toptal.com/developers/gitignore?templates=react
