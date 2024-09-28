@@ -6,7 +6,8 @@
         "editor.quickSuggestions": {
             "strings": true
         },
-        "editor.suggest.insertMode": "replace"
+        "editor.suggest.insertMode": "replace",
+        "editor.tabSize": 4,
     },
     "[yaml]": {
         "editor.insertSpaces": true,
