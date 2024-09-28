@@ -158,21 +158,22 @@ def send_gmail(usrjson, services_map) -> None:
     else:
         sent_result = "Emails could not be sent to " + notsent_brokers
 
-    cnf_email = email_utils.format_confirmation_email(sent_result)
-    # Send confirmation email
-    # reply_to_addr = usrjson['email']
-    cnfMessage = MIMEMultipart()
-    cnfMessage['to'] = usrjson['email']
-    cnfMessage['subject'] = 'PrivacyBot Confirmation'
-    cnfMessage.attach(MIMEText(cnf_email, 'html'))
-    cnf_string = base64.urlsafe_b64encode(cnfMessage.as_bytes()).decode()
-    cnf_message = gmail_service.users().messages().send(userId='me', body={'raw': cnf_string}).execute()
-    cnf_message_id = cnf_message['id']
-    cnf_label = gmail_service.users().messages().modify(userId='me', id=cnf_message_id, body={"addLabelIds":[label_id,]}).execute()
+    
+    # cnf_email = email_utils.format_confirmation_email(sent_result)
+    # # Send confirmation email
+    # # reply_to_addr = usrjson['email']
+    # cnfMessage = MIMEMultipart()
+    # cnfMessage['to'] = usrjson['email']
+    # cnfMessage['subject'] = 'PrivacyBot Confirmation'
+    # cnfMessage.attach(MIMEText(cnf_email, 'html'))
+    # cnf_string = base64.urlsafe_b64encode(cnfMessage.as_bytes()).decode()
+    # cnf_message = gmail_service.users().messages().send(userId='me', body={'raw': cnf_string}).execute()
+    # cnf_message_id = cnf_message['id']
+    # cnf_label = gmail_service.users().messages().modify(userId='me', id=cnf_message_id, body={"addLabelIds":[label_id,]}).execute()
 
-    # Delete the token file
-    for filename in glob.glob("token_gmail*"):
-        os.remove(filename)
+    # # Delete the token file
+    # for filename in glob.glob("token_gmail*"):
+    #     os.remove(filename)
 
 def send_email(usrjson: list[str], servicemap: dict) -> None:
     print('Sending email')

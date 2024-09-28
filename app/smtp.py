@@ -1,21 +1,22 @@
 import smtplib, ssl
 from os import getenv
+from dotenv import load_dotenv
 
-smtp_server = "smtp.gmail.com"
 port = 587  # For starttls
-
 
 class smtp_client:
     """
-    Configures SMTP client for secure
+    Configures SMTP client for secure connection to the host.
     """
     def __init__(self):
-        self.sender_email = getenv('SENDER_EMAIL_ADDR')
-        self.password = getenv('SMTP_API_KEY')
+        load_dotenv()
+        self.sender_email = getenv('SENDER_USER')
+        self.password = getenv('SMTP_PASSWORD')
+        self.smtp_host = getenv('SMTP_HOST')
 
         self.context = ssl.create_default_context()
 
-        self.server = smtplib.SMTP(smtp_server, port)
+        self.server = smtplib.SMTP(self.smtp_host, port)
         self.server.starttls(context=self.context) # Secure the connection
         self.server.login( self.sender_email,  self.password)
 
